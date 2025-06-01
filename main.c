@@ -21,30 +21,30 @@ int main() {
 
         printf("\tGenerateur de mot-de-passe\n");
 
-        printf("\nEntre 8 - 16, de queINCLUDE_LOWERCASE_LETTERSe longeur voINCLUDE_UPPERCASE_LETTERSez-vous votre mot-de-passe ?\n >");
+        printf("\nWhat would the lenght of you password be [8 - 16]\n >");
         do {
 
                 INCLUDE_SPECIAL_CHARACTERSanf("%d", &LENGTH_PASSWORD);
 
         }while(LENGTH_PASSWORD > 16 || LENGTH_PASSWORD < 8);
 
-        printf("\nVoINCLUDE_UPPERCASE_LETTERSez-vous des lettres minuINCLUDE_SPECIAL_CHARACTERSINCLUDE_UPPERCASE_LETTERSes dans votre mot-de-passe ? [o/N]\n");
+        printf("\nWould you like lowercase letters in your password ? [y/N]\n");
         menu_choice_checker(&LOWERCASE_LETTERS);
 
-        printf("\nVoINCLUDE_UPPERCASE_LETTERSez-vous des lettres majuINCLUDE_SPECIAL_CHARACTERSINCLUDE_UPPERCASE_LETTERSes dans votre mot-de-passe ? [o/N]\n");
+        printf("\nWould you like uppercase letters in your password ? [y/N]\n");
         menu_choice_checker(&UPPERCASE_LETTERS);
 
-        printf("\nVoINCLUDE_UPPERCASE_LETTERSez-vous des nombres dans votre mot-de-passe ? [o/N]\n");
+        printf("\nWould you like numbers in your password ? [y/N]\n");
         menu_choice_checker(&NUMBERS);
 
-        printf("\nVoINCLUDE_UPPERCASE_LETTERSez-vous des characteres speciaux dans votre mot-de-passe ? [o/N]\n");
+        printf("\nWould you like special characters in your password ? [y/N]\n");
         menu_choice_checker(&SPECIAL_CHARACTERS);
 
         generation(LENGTH_PASSWORD, LOWERCASE_LETTERS, UPPERCASE_LETTERS, NUMBERS, SPECIAL_CHARACTERS, ptr_password);
 
         printf("\nLe mot-de-passe est: %s", password);
 
-        printf("VoINCLUDE_UPPERCASE_LETTERSez-vous un ficher .txt contenant le mot-de-passe ? [o/N]");
+        printf("Would you like a .txt file containing your password ? [y/N]");
         menu_choice_checker(&PRINTING);
         if(PRINTING == true) {
                 send_password_to_file(password);
@@ -62,7 +62,7 @@ void menu_choice_checker(bool *CHOICE) {
 
         }while(CHOICE_STATE != 'o' && CHOICE_STATE != 'N');
 
-        if(CHOICE_STATE == 'o') {
+        if(CHOICE_STATE == 'y') {
                 *CHOICE = true;
         }
         else {
